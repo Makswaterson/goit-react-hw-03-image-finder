@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { FcSearch } from 'react-icons/fc';
+import { toast } from 'react-hot-toast';
 
 export class Searchbar extends Component {
   state = {
@@ -13,6 +14,9 @@ export class Searchbar extends Component {
 
   onSubmit = e => {
     e.preventDefault();
+    if (!this.state.input) {
+      return toast.error('Enter your query, the search bar is empty!');
+    }
     this.props.onSubmit(this.state.input);
     console.log(this.props.onSubmit);
     this.setState({ input: '' });
