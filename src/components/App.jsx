@@ -6,6 +6,7 @@ import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
 import { Button } from './Button/Button';
 import { Loader } from './Loader/Loader';
+import { Modal } from './Modal/Modal';
 
 export class App extends Component {
   state = {
@@ -16,6 +17,9 @@ export class App extends Component {
     loader: false,
     showBtnLoadMore: false,
     per_page: 12,
+    showModal: false,
+    largeImageURL: '',
+    tags: '',
   };
 
   onFormSubmit = inputValue => {
@@ -59,15 +63,37 @@ export class App extends Component {
     }));
   };
 
+  toggleModal = (largeImageURL, tags) => {
+    this.setState(prevState => ({
+      showModal: !prevState.showModal,
+      tags,
+      largeImageURL,
+    }));
+    console.log(largeImageURL);
+    console.log(tags);
+  };
+
   render() {
-    const { pictures, error, inputValue, loader, showBtnLoadMore } = this.state;
-    console.log(error);
+    const {
+      pictures,
+      error,
+      inputValue,
+      largeImageURL,
+      tags,
+      showModal,
+      loader,
+      showBtnLoadMore,
+    } = this.state;
+
     return (
       <div className="app">
         <Searchbar onSubmit={this.onFormSubmit} />
-        <ImageGallery pictures={this.state.pictures} />
+        <ImageGallery pictures={pictures} onClick={this.toggleModal} />
         {showBtnLoadMore && <Button onClick={this.onLoadMore} />}
         {loader && <Loader />}
+        {showModal && (
+          <Modal src={largeImageURL} alt={tags} onClose={this.toggleModal} />
+        )}
         <Toaster
           toastOptions={{
             duration: 2000,

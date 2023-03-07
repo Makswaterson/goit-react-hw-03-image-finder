@@ -2,8 +2,7 @@ import { Component } from 'react';
 import PropTypes from 'prop-types';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 
-export const ImageGallery = ({ pictures }) => {
-  console.log(pictures);
+export const ImageGallery = ({ pictures, onClick }) => {
   return (
     <ul className="gallery">
       {pictures.map(({ id, webformatURL, largeImageURL, tags }) => {
@@ -13,6 +12,9 @@ export const ImageGallery = ({ pictures }) => {
             webformatURL={webformatURL}
             tags={tags}
             largeImageURL={largeImageURL}
+            onClick={() => {
+              onClick(largeImageURL, tags);
+            }}
           />
         );
       })}

@@ -18,7 +18,7 @@ export class Searchbar extends Component {
       return toast.error('Enter your query, the search bar is empty!');
     }
     this.props.onSubmit(this.state.input);
-    console.log(this.props.onSubmit);
+
     this.setState({ input: '' });
   };
 
