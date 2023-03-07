@@ -74,8 +74,6 @@ export class App extends Component {
   render() {
     const {
       pictures,
-      error,
-      inputValue,
       largeImageURL,
       tags,
       showModal,

@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import { ImageGalleryItem } from '../ImageGalleryItem/ImageGalleryItem';
 
@@ -26,7 +26,7 @@ ImageGallery.propTypes = {
   onClick: PropTypes.func.isRequired,
   pictures: PropTypes.arrayOf(
     PropTypes.shape({
-      key: PropTypes.number.isRequired,
+      key: PropTypes.number,
       webformatURL: PropTypes.string.isRequired,
       tags: PropTypes.string.isRequired,
       largeImageURL: PropTypes.string.isRequired,
