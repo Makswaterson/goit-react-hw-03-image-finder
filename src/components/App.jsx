@@ -69,8 +69,6 @@ export class App extends Component {
       tags,
       largeImageURL,
     }));
-    console.log(largeImageURL);
-    console.log(tags);
   };
 
   render() {

@@ -21,3 +21,15 @@ export const ImageGallery = ({ pictures, onClick }) => {
     </ul>
   );
 };
+
+ImageGallery.propTypes = {
+  onClick: PropTypes.func.isRequired,
+  pictures: PropTypes.arrayOf(
+    PropTypes.shape({
+      key: PropTypes.number.isRequired,
+      webformatURL: PropTypes.string.isRequired,
+      tags: PropTypes.string.isRequired,
+      largeImageURL: PropTypes.string.isRequired,
+    })
+  ),
+};
